@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
                 attributes: [
                     'id',
                     'title',
-                    'post_url',
+                    'content',
                     'created_at'
                 ]
             },
@@ -53,7 +53,6 @@ router.get('/:id', (req, res) => {
                 res.status(404).json({ message: 'No user found with that ID.' });
                 return;
             }
-
             res.json(dbUserData);
         })
         .catch(err => {
@@ -96,14 +95,12 @@ router.post('/login', (req, res) => {
                 res.status(400).json({ message: 'No user found with that email.' })
                 return;
             }
-
             const validPassword = dbUserData.checkPassword(req.body.password);
 
             if (!validPassword) {
                 res.status(400).json({ message: 'Incorrect password!' });
                 return;
             }
-
             req.session.save(() => {
                 // declare session variables
                 req.session.user_id = dbUserData.id;

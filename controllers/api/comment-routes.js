@@ -47,7 +47,6 @@ router.delete('/:id', withAuth, (req, res) => {
                 res.status(404).json({ message: 'No post found with this ID.' })
                 return;
             };
-
             res.json(dbPostData);
         })
         .catch(err => {

@@ -67,7 +67,7 @@ router.get('/:id', (req, res) => {
                 ],
                 include: {
                     model: User,
-                    attributes: ['username ']
+                    attributes: ['username']
                 }
             }
         ]
@@ -77,7 +77,6 @@ router.get('/:id', (req, res) => {
                 res.status(404).json({ message: 'No post found with this ID.' });
                 return;
             }
-
             res.json(dbPostData);
         })
         .catch(err => {
@@ -118,7 +117,6 @@ router.put('/:id', withAuth, (req, res) => {
                 res.status(404).json({ message: 'No post found with this ID.' });
                 return;
             }
-
             res.json(dbPostData)
         })
         .catch(err => {
@@ -128,7 +126,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 // delete a post
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id
@@ -139,7 +137,6 @@ router.delete('/:id', (req, res) => {
                 res.status(404).json({ message: 'No post found with this ID' });
                 return;
             }
-
             res.json(dbPostData);
         });
 });
