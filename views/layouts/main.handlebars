@@ -14,13 +14,16 @@
                 <li>
                     <a href="/">Home</a>
                 </li>
+                {{#if loggedIn}}
                 <li>
                     <a href="/dashboard">Dashboard</a>
                 </li>
+                <button id="logout" class="btn-no-style">Logout</button>
+                {{else}}
                 <li>
                     <a href="Login">Login</a>
                 </li>
-                <button id="logout" class="btn-no-style">Logout</button>
+                {{/if}}
             </ul>
         </nav>
         <h1 class="app-title">The Tech Blog</h1>
@@ -30,6 +33,9 @@
         {{{ body }}}
     </main>
 
+    {{#uf loggedIn}}
     <script src="/javascript/logout.js"></script>
+    {{/if}}
+
 </body>
 </html>
