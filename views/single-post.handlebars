@@ -2,18 +2,8 @@
 {{> post-info post}}
 
 {{#if loggedIn}}
-<form class="comment-form card">
-    <div class="card-header">Add New Comment</div>
-    <div class="comment-form-body">
 
-        <div>
-            <textarea name="comment-body" class="form-textarea"></textarea>
-        </div>
-        <div>
-            <button type="submit" class="btn">Add Comment</button>
-        </div>
-    </div>
-</form>
+{{> comment-form}}
 
 {{/if}}
  <!--in order to use partial you need >-->
