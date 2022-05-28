@@ -4,9 +4,7 @@ const withAuth = require('../../utils/auth');
 
 // get all posts
 router.get('/', (req, res) => {
-    console.log('======================');
     Post.findAll({
-        //Query connections
         attributes: [
             'id',
             'title',
@@ -76,6 +74,7 @@ router.get('/:id', (req, res) => {
                 res.status(404).json({ message: 'No post found with this ID.' });
                 return;
             }
+
             res.json(dbPostData);
         })
         .catch(err => {
@@ -116,6 +115,7 @@ router.put('/:id', withAuth, (req, res) => {
                 res.status(404).json({ message: 'No post found with this ID.' });
                 return;
             }
+
             res.json(dbPostData)
         })
         .catch(err => {
@@ -136,6 +136,7 @@ router.delete('/:id', withAuth, (req, res) => {
                 res.status(404).json({ message: 'No post found with this ID' });
                 return;
             }
+
             res.json(dbPostData);
         });
 });
